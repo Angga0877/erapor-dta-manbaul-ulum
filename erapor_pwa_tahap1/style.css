@@ -1,0 +1,66 @@
+:root {
+  color-scheme: light;
+  --green: #166534;
+  --green-dark: #14532d;
+  --green-soft: #dcfce7;
+  --text: #17231b;
+  --muted: #637168;
+  --line: #e0e8e2;
+  --surface: #ffffff;
+  --page: #f4f7f4;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.topbar {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px max(20px, calc((100% - 1080px) / 2));
+  background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.brand-mark {
+  width: 48px; height: 48px; display: grid; place-items: center;
+  flex: 0 0 48px; border-radius: 14px; color: white; font-weight: 800;
+  background: var(--green); letter-spacing: -1px;
+}
+h1 { font-size: clamp(17px, 2.2vw, 22px); margin: 2px 0 0; }
+.eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 1.1px; margin: 0; color: var(--green); }
+.badge { margin-left: auto; border-radius: 999px; padding: 7px 11px; font-size: 12px; font-weight: 700; background: #eef2ef; white-space: nowrap; }
+.badge.online { background: var(--green-soft); color: var(--green-dark); }
+.badge.offline { background: #ffedd5; color: #9a3412; }
+.container { max-width: 1080px; padding: 28px 20px 36px; margin: auto; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: 0 4px 18px #16331d08; }
+.welcome { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+h2 { font-size: 20px; margin: 8px 0; }
+h3 { margin: 10px 0 8px; font-size: 16px; }
+p { line-height: 1.55; }
+.muted { color: var(--muted); }
+.status-icon { display: grid; place-items: center; width: 58px; height: 58px; flex: 0 0 58px; border-radius: 50%; background: var(--green-soft); color: var(--green); font-size: 28px; font-weight: 800; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 18px 0; }
+.card-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; background: var(--green-soft); color: var(--green); font-size: 23px; }
+.grid p { margin-bottom: 0; color: var(--muted); font-size: 14px; overflow-wrap: anywhere; }
+.test-card { margin-top: 18px; }
+label { display: block; font-weight: 700; font-size: 14px; margin: 16px 0 7px; }
+textarea { display: block; width: 100%; resize: vertical; border: 1px solid #cbd5ce; border-radius: 10px; padding: 12px; font: inherit; background: white; color: var(--text); }
+textarea:focus { outline: 3px solid #bbf7d0; border-color: var(--green); }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+button { border: 0; border-radius: 10px; padding: 11px 15px; background: var(--green); color: white; font: inherit; font-weight: 700; cursor: pointer; }
+button:hover { background: var(--green-dark); }
+button.secondary { background: #e8eee9; color: var(--text); }
+.result { min-height: 24px; font-size: 14px; font-weight: 600; }
+.notice { margin-top: 20px; padding: 15px 18px; border-left: 4px solid #d97706; background: #fff7ed; border-radius: 8px; color: #7c2d12; font-size: 14px; }
+.notice p { margin: 6px 0 0; }
+footer { padding: 18px; text-align: center; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); }
+@media (max-width: 650px) {
+  .topbar { padding: 14px; gap: 10px; flex-wrap: wrap; }
+  .brand-mark { width: 42px; height: 42px; flex-basis: 42px; }
+  .badge { margin-left: 52px; }
+  .container { padding: 18px 13px 26px; }
+  .card { padding: 17px; border-radius: 14px; }
+  .grid { grid-template-columns: 1fr; gap: 10px; }
+  .welcome { align-items: flex-start; }
+  .status-icon { width: 42px; height: 42px; flex-basis: 42px; font-size: 22px; }
+}

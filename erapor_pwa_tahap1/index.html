@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#166534">
+  <meta name="description" content="E-Rapor DTA MANBAUL ULUM">
+  <title>E-Rapor DTA MANBAUL ULUM</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark" aria-hidden="true">MU</div>
+    <div>
+      <p class="eyebrow">SISTEM INFORMASI MADRASAH</p>
+      <h1>E-Rapor DTA MANBAUL ULUM</h1>
+    </div>
+    <span id="connectionBadge" class="badge">Memeriksa koneksi…</span>
+  </header>
+
+  <main class="container">
+    <section class="welcome card">
+      <div>
+        <p class="eyebrow">TAHAP 1 · PENGUJIAN PWA</p>
+        <h2>Kerangka aplikasi berhasil dibuka</h2>
+        <p class="muted">Ini adalah halaman uji awal, belum aplikasi rapor lengkap. Data santri, nilai, absensi, dan sinkronisasi akan ditambahkan setelah tahap ini lulus pengujian.</p>
+      </div>
+      <div class="status-icon" aria-hidden="true">✓</div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="card-icon">▦</div>
+        <h3>Aplikasi</h3>
+        <p id="appStatus">Memeriksa dukungan browser…</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">⇄</div>
+        <h3>Koneksi</h3>
+        <p id="networkStatus">Memeriksa koneksi…</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">▣</div>
+        <h3>Penyimpanan lokal</h3>
+        <p id="storageStatus">Memeriksa penyimpanan…</p>
+      </article>
+    </section>
+
+    <section class="card test-card">
+      <h2>Uji penyimpanan lokal</h2>
+      <p class="muted">Catatan ini hanya untuk menguji apakah browser dapat menyimpan data di perangkat. Ini belum merupakan data santri atau nilai rapor.</p>
+      <label for="testNote">Catatan uji</label>
+      <textarea id="testNote" rows="3" placeholder="Contoh: Uji PWA pertama"></textarea>
+      <div class="actions">
+        <button id="saveBtn" type="button">Simpan catatan uji</button>
+        <button id="loadBtn" class="secondary" type="button">Baca catatan tersimpan</button>
+      </div>
+      <p id="testResult" class="result" role="status">Belum ada pengujian.</p>
+    </section>
+
+    <section class="notice">
+      <strong>Penting:</strong> jangan masukkan data pribadi santri ke halaman uji ini. Gunakan hanya catatan percobaan.
+      <p>Versi kerangka: 0.1.0 · Database online belum dihubungkan.</p>
+    </section>
+  </main>
+
+  <footer>© DTA MANBAUL ULUM · Kerangka PWA tahap pertama</footer>
+  <script src="./app.js"></script>
+</body>
+</html>
