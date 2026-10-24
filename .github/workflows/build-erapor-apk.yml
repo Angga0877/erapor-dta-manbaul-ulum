@@ -1,0 +1,56 @@
+name: Build E-Rapor Madrasah APK
+
+on:
+  push:
+    branches:
+      - build-erapor-offline-apk
+    paths:
+      - 'ERaporMadrasah-Android-Source.zip'
+      - '.github/workflows/build-erapor-apk.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Extract Android source project
+        run: |
+          test -f ERaporMadrasah-Android-Source.zip
+          mkdir -p extracted
+          unzip -q ERaporMadrasah-Android-Source.zip -d extracted
+          test -f extracted/ERaporMadrasah/app/build.gradle.kts
+
+      - name: Build debug APK
+        working-directory: extracted/ERaporMadrasah
+        run: gradle --no-daemon assembleDebug
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: E-Rapor-Madrasah-APK
+          path: extracted/ERaporMadrasah/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
